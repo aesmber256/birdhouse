@@ -45,7 +45,7 @@ for (const {date, hidden} of dates) {
 //@ts-ignore
 document.getElementById("main-content").addEventListener("click", async x => {
     if (!(x.target instanceof HTMLElement) || x.target.tagName !== "AVIARY-ENTRY") return;
-    location.assign(`/games.html?date=${x.target.dataset.ymd}`);
+    location.assign(`./games.html?date=${x.target.dataset.ymd}`);
 });
 
 //@ts-ignore
@@ -61,5 +61,5 @@ document.getElementById("new-game-btn").addEventListener("click", async x => {
     }
 
     await api.newGame(BirdhouseAPI.createDefaultGame(ymd));
-    location.assign(`/games.html?date=${ymd}`)
+    location.assign(`./games.html?date=${ymd}`)
 });
