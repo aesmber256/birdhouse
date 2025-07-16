@@ -31,10 +31,6 @@ aviary-game {
     border: var(--basic-border);
     border-radius: 0.75em;
 
-    hr.game--hr {
-        border-color: var(--bg2);
-    }
-
     .game--line3 {
         margin: auto;
         width: fit-content;
