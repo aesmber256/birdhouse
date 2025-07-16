@@ -3,18 +3,24 @@
     --font-size-small: 12px;
     --fg: #ffffff;
     --fg2: rgb(160, 160, 160);
+    --fg3: rgb(85, 85, 85);
     --bg: rgb(34, 34, 34);
     --bg2: rgb(46, 46, 46);
     --bg3: rgb(60, 60, 60);
+    --bg4: rgb(106, 111, 116);
     --link-color: #ee2562;
     --thin-border-size: calc(max(0.1em, 2px));
-    --basic-border: var(--fg) var(--thin-border-size) solid;
+    --basic-border: var(--bg4) var(--thin-border-size) solid;
 }
 
 html {
     font-size: var(--font-size);
     color: var(--fg);
     background: var(--bg);
+}
+
+hr {
+    border-color: var(--fg2);
 }
 
 html, body {
@@ -32,29 +38,52 @@ a.unstyled {
     font: inherit;
 }
 
-.btn:not(.disabled) {
-    cursor: pointer;
-    user-select: none;
-
-    &:hover {
-        text-decoration: underline dotted;
-    }
-
-    &:active {
-        text-decoration: underline;
-        font-style: italic;
-    }
-}
-
-.btn.disabled {
-    cursor: not-allowed;
-    user-select: none;
-}
-
-.btn.border {
+input, textarea {
     border: var(--basic-border);
-    padding: 0.15em;
-    background: var(--bg2);
+    background-color: var(--bg2);
+    color: var(--fg1);
+    box-shadow: none;
+    
+    &:invalid {
+        border-color: red;
+        outline-color: red;
+        border-radius: 5px;
+    }
+}
+
+.btn {
+    &:not(.disabled) {
+        cursor: pointer;
+        user-select: none;
+    
+        &:hover {
+            text-decoration: underline dotted;
+        }
+    
+        &:active {
+            text-decoration: underline;
+            font-style: italic;
+        }
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        user-select: none;
+    }
+
+    &.border {
+        border: var(--basic-border);
+    
+        &:not(.no-padding) {
+            padding: 0.15em;
+        }
+    
+        background: var(--bg2);
+
+        &.rounded {
+            border-radius: 0.5em;
+        }
+    }
 }
 
 body:not([data-is-staff]) [data-staff] {

@@ -14,9 +14,11 @@
     align-content: flex-start;
     justify-content: center;
     align-items: center;
+    margin-bottom: 0.5em;
 }
 
 #filter-input {
+    margin-left: 2ch;
     font-size: 0.8em;
     display: block;
     height: 100%;

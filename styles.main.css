@@ -46,7 +46,6 @@
 /*noinspection CssInvalidHtmlTagReference*/
 aviary-entry {
     padding: 1em;
-    border: var(--fg) var(--thin-border-size) solid;
     background: var(--entry-bg);
     border-radius: 0.72em;
     cursor: pointer;
@@ -81,7 +80,6 @@ aviary-entry {
     width: fit-content;
     margin: 0.75em auto auto;
     padding: 0.5em;
-    border: var(--fg) var(--thin-border-size) solid;
     background: var(--bg2);
     border-radius: 0.72em;
 }

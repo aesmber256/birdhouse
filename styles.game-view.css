@@ -60,23 +60,13 @@
 }
 
 #signup-btn {
-    border: var(--basic-border);
     padding: 0.15em;
-    background: var(--bg2);
 }
 
 input {
     display: block;
     height: 100%;
     box-sizing: border-box;
-}
-
-input, textarea {
-    &:invalid {
-        border-color: red;
-        outline-color: red;
-        border-radius: 5px;
-    }
 }
 
 #staff-view--btn-container {
