@@ -132,7 +132,7 @@ document.getElementById("signup-btn")?.addEventListener("click", async x => {
 //@ts-ignore
 document.getElementById("staff-view--signups-btn")?.addEventListener("click", async x => {
     if (!isStaff) return;
-    location.assign(`/signups.html?gameid=${game.id}`);
+    location.assign(`./signups.html?gameid=${game.id}`);
 });
 
 //@ts-ignore
@@ -165,5 +165,5 @@ document.getElementById("staff-view--delete-btn")?.addEventListener("click", asy
     if (!isStaff) return;
     if (!confirm("Are you sure you want delete this game?")) return;
     await api.deleteGame(gameId);
-    location.replace(`/games.html?date=${game.date}&navback=1`);
+    location.replace(`./games.html?date=${game.date}&navback=1`);
 });

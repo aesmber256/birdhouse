@@ -37,7 +37,7 @@ if (games.length === 0) {
     if (!query.has("navback")) {
         alert("No games on this date found");
     }
-    location.replace("/index.html");
+    location.replace("./index.html");
 }
 
 console.log(games);
@@ -64,7 +64,7 @@ for (let i = games.length - 1; i >= 0; i--) {
 gamesList.addEventListener("click", ev => {
     if (!(ev.target instanceof HTMLElement) || !ev.target.classList.contains("game--btn")) return;
     const dataset = ev.target.parentElement?.parentElement?.dataset;
-    location.assign(`/game-view.html?gameid=${dataset?.id}&gamenumber=${dataset?.num}`);
+    location.assign(`./game-view.html?gameid=${dataset?.id}&gamenumber=${dataset?.num}`);
 });
 
 
