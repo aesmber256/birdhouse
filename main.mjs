@@ -1,7 +1,7 @@
 //@ts-check
 import {
     attachErrorAlerts,
-    formatDate,
+    formatDayDate,
     setupStaffAuth
 } from "./utils.mjs";
 attachErrorAlerts(window);
@@ -30,7 +30,7 @@ for (const {date, hidden} of dates) {
     /**@type {HTMLElement}*/
     //@ts-ignore
     const entry = entryTemplate.content.children[0].cloneNode(true);
-    entry.textContent = formatDate(actualDate);
+    entry.textContent = formatDayDate(actualDate);
     
     entry.dataset.ymd = String(date);
     if (hidden) {

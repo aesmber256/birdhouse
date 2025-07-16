@@ -4,7 +4,7 @@ import {
     cloneTemplate,
     setupStaffAuth,
     getByClass,
-    formatDate
+    formatDayDate
 } from "./utils.mjs";
 attachErrorAlerts(window);
 
@@ -12,7 +12,7 @@ import {
     BirdhouseAPI,
     DEBUG as API_DEBUG_URL
 } from "./api.mjs";
-import { formatHHMM, formatRawHHMM, formatRawSHHMM, formatSHHMM, ymdToDate } from "./api-utils.mjs";
+import { formatHHMM, formatRawHHMM, formatRawSHHMM, formatSHHMM, ymdTimeTzToDate, ymdToDate } from "./api-utils.mjs";
 
 
 const query = new URLSearchParams(location.search);
@@ -79,10 +79,6 @@ const stLabel = document.getElementById("game-storyteller-value--label");
 //@ts-ignore
 const hiddenInput = document.getElementById("game-hidden-value--input");
 
-/**@type {HTMLSpanElement} */
-//@ts-ignore
-const Label = document.getElementById("game--value--label");
-
 /**@type {HTMLInputElement} */
 //@ts-ignore
 const nameInput = document.getElementById("signup-name--input");
@@ -91,14 +87,16 @@ const nameInput = document.getElementById("signup-name--input");
 //@ts-ignore
 const notesInput = document.getElementById("signup-notes--area");
 
+const date = ymdTimeTzToDate(game.date, game.time, game.tz);
+
 gameNumber.textContent = String(queryGameNumber);
-gameDate.textContent = formatDate(ymdToDate(game.date));
+gameDate.textContent = formatDayDate(date);
 
 timeInput.value = formatRawHHMM(game.time);
 timeLabel.textContent = formatHHMM(game.time);
 
 tzInput.value = formatRawSHHMM(game.tz);
-tzLabel.textContent = formatSHHMM(game.tz);
+tzLabel.textContent = `UTC${formatSHHMM(game.tz)}`;
 
 scriptInput.value = scriptLabel.textContent = game.script_name;
 linkInput.value = scriptLabel.href = game.script_link;

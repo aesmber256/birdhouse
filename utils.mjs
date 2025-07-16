@@ -45,7 +45,7 @@ export class ExitError extends Error {
  * @param {Date} date 
  * @returns {string}
  */
-export function formatDate(date) {
+export function formatDayDate(date) {
     return `${date.getDate()}. ${date.getMonth() + 1}. ${date.getFullYear()}`;
 }
 

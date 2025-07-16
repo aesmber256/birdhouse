@@ -1,31 +1,4 @@
-/**
- * Groups games by date, sorts games within each group by id ascending,
- * and sorts the groups by date ascending.
- *
- * @param {Games[]} games - Array of Games objects.
- * @returns {[YYYYMMDD, Games[]][]} Array of tuples where the first element is date (YYYYMMDD),
- * and the second element is an array of games sorted by id.
- */
-export function groupSortGamesByDate(games) {
-    // Disclaimer: this was partly ai generated cause i AINT writing this out by hand
-    /**@type {Map<number, Games[]>}*/
-    const grouped = new Map();
-
-    for (const game of games) {
-        if (!grouped.has(game.date)) {
-            grouped.set(game.date, []);
-        }
-        grouped.get(game.date).push(game);
-    }
-
-    // Sort each group's games by id ascending
-    for (const gamesArray of grouped.values()) {
-        gamesArray.sort((a, b) => a.game_number - b.game_number);
-    }
-
-    // Convert to array and sort by date ascending
-    return Array.from(grouped.entries()).sort(([dateA], [dateB]) => dateA - dateB);
-}
+//@ts-check
 
 /**
  * Converts a yyyymmdd number into a JavaScript Date object.
@@ -78,7 +51,36 @@ export function formatRawHHMM(hhmm) {
 }
 
 /**
- * @param {API.SHHMM} hhmm 
+ * 
+ * @param {API.YYYYMMDD} ymd 
+ * @param {API.HHMM} time 
+ * @param {API.SHHMM} tz 
+ */
+export function ymdTimeTzToDate(ymd, time, tz) {// Parse date components
+    const year = Math.floor(ymd / 10000);
+    const month = Math.floor((ymd % 10000) / 100) - 1; // JS months 0-based
+    const day = ymd % 100;
+  
+    // Parse time components
+    const hour = Math.floor(time / 100);
+    const minute = time % 100;
+  
+    // Parse timezone offset
+    const offsetSign = Math.sign(tz);
+    const absOffset = Math.abs(tz);
+    const offsetHours = Math.floor(absOffset / 100);
+    const offsetMinutes = absOffset % 100;
+    const totalOffsetMinutes = offsetSign * (offsetHours * 60 + offsetMinutes);
+  
+    // Create Date in UTC by subtracting offset (convert local time to UTC)
+    // So add offset in minutes to local time to get UTC time
+    const utcTimestamp = Date.UTC(year, month, day, hour, minute) - totalOffsetMinutes * 60 * 1000;
+  
+    return new Date(utcTimestamp);
+}
+
+/**
+ * @param {API.SHHMM} shhmm 
  * @returns {string}
  */
 export function formatSHHMM(shhmm) {
@@ -86,7 +88,7 @@ export function formatSHHMM(shhmm) {
 }
 
 /**
- * @param {API.SHHMM} hhmm 
+ * @param {API.SHHMM} shhmm 
  * @returns {string}
  */
 export function formatRawSHHMM(shhmm) {
