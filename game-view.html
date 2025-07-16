@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.game-view.css">
+    <title>Birdhouse - (unlimited) Games</title>
+</head>
+<body>
+    <header id="main-header">
+        <div id="header--name"><a href="/index.html" class="unstyled"><span id="header--name--highlight">Aviary</span> | Project Birdhouse</a></div>
+        <div id="header--staff-btn" class="btn">
+            <span data-not-staff>Staff Login</span>
+            <span data-staff>Logout</span>
+        </div>
+    </header>
+    <main id="main-content">
+        <div id="container">
+            <div id="game-header" class="header">
+                Game <span id="game-number">1</span> on <span id="game-date">1. 1. 1970</span>
+                <hr>
+            </div>
+
+            <div id="game-time-label" class="label">Time</div>
+            <div id="game-time-value">
+                <span id="game-time-value--label" data-not-staff>#Time</span>
+                <input id="game-time-value--input" type="text" value="2000" placeholder="2000" pattern="^(?:\+?|-)(?:[01]\d|2[0-3])[0-5]\d$" required data-staff>
+            </div>
+
+            <div id="game-tz-label" class="label">Timezone</div>
+            <div id="game-tz-value">
+                <span id="game-tz-value--label" data-not-staff>#Timezone</span>
+                <input id="game-tz-value--input" type="text" value="-0200" placeholder="-0200" pattern="^(?:\+?|-)(?:[01]\d|2[0-3])[0-5]\d$" required data-staff>
+            </div>
+
+            <div id="game-script-label" class="label">Script</div>
+            <div id="game-script-value">
+                <a id="game-script-value--link" href="https://botc-scripts.azurewebsites.net/script/133/1.0.0" data-not-staff>Trouble Brewing</a>
+                <input id="game-script-value--input-name" type="text" value="Trouble Brewing" minlength="1" required data-staff>
+                <input id="game-script-value--input-link" type="url" value="https://botc-scripts.azurewebsites.net/script/133/1.0.0" minlength="1" required data-staff>
+            </div>
+
+            <div id="game-storyteller-label" class="label">Storyteller</div>
+            <div id="game-storyteller-value">
+                <span id="game-storyteller-value--label" data-not-staff>#Storyteller</span>
+                <input id="game-storyteller-value--input" type="text" value="Ambrosia" minlength="1" required data-staff>
+            </div>
+
+            <div id="game-hidden-label" class="label" data-staff>Hidden</div>
+            <div id="game-hidden-value" data-staff>
+                <input id="game-hidden-value--input" type="checkbox">
+            </div>
+
+
+            <div id="signup" data-not-staff>
+                <hr>
+                <div id="signup-content">
+                    <div id="signup-name">
+                        <label for="signup-name--input">Name</label>
+                        <input id="signup-name--input" type="text" minlength="1" maxlength="256" required placeholder="Your name here">
+                    </div>
+                    <div id="signup-notes">
+                        <label for="signup-notes--area">Notes <span id="signup-notes--hint">(max 1000 characters; also resize me!)</span></label>
+                        <div id="signup-notes-container">
+                            <textarea id="signup-notes--area" rows="12" type="text" maxlength="1000"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div id="signup-btn-container">
+                    <span id="signup-btn" class="btn">Signup</span>
+                </div>
+            </div>
+
+            <div id="staff-view" data-staff>
+                <hr>
+                <div id="staff-view--btn-container">
+                    <div id="staff-view--signups-btn" class="btn border">
+                        Signups
+                    </div>
+                    <div id="staff-view--update-btn" class="btn border">
+                        Update
+                    </div>
+                    <div id="staff-view--delete-btn" class="btn border">
+                        Delete
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div hidden>
+    </div>
+    <script src="game-view.mjs" type="module"></script>
+</body>
+</html>

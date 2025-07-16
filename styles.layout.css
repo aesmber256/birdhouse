@@ -1,0 +1,57 @@
+@import "styles.basic.css";
+
+:root {
+    --header-bg: var(--bg3);
+    --header-fg: #ffffff;
+    --header-fg-highlight: #ee2562;
+    /* ff2a6a */
+    --header-sep-color: rgb(255, 255, 255);
+}
+
+#main-header {
+    font-size: 2em;
+    color: var(--header-fg);
+    background: var(--header-bg);
+    border-bottom: var(--header-sep-color) var(--thin-border-size) solid;
+    padding: 1em;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+#header--name--highlight {
+    font-size: 1em;
+    font-style: italic;
+    color: var(--header-fg-highlight);
+}
+
+@media only screen and (max-width: 660px) {
+    #main-header {
+        font-size: 1.5em;
+        padding: 0.5em;
+    }
+    
+    #main-content {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    #main-header {
+        font-size: 1.2em;
+        padding: 0.3em;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        row-gap: 0.5em;
+    }
+
+    #main-content {
+        font-size: 0.8em;
+    }
+}

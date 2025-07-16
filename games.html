@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.games.css">
+    <title>Birdhouse - (unlimited) Games</title>
+</head>
+<body>
+    <header id="main-header">
+        <div id="header--name"><a href="/index.html" class="unstyled"><span id="header--name--highlight">Aviary</span> | Project Birdhouse</a></div>
+        <div id="header--staff-btn" class="btn">
+            <span data-not-staff>Staff Login</span>
+            <span data-staff>Logout</span>
+        </div>
+    </header>
+    <main id="main-content">
+        <div id="games">
+            <div id="new-game-container">
+                <hr>
+                <div id="new-game-btn" class="btn" data-staff>
+                    Add new game
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div hidden>
+        <template id="template-game">
+            <aviary-game>
+                <div class="game--line1">
+                    <span class="game--number">
+                        <span class="game--number--label">Game</span>
+                        <span class="game--number--value">1</span>
+                    </span>
+                    <span class="game--time">
+                        <span class="game--time--label">at</span>
+                        <span class="game--time--value">2000</span>
+                    </span>
+                    <span class="game--tz">
+                        (
+                        <span class="game--tz--value">UTC+03:00</span>
+                        )
+                    </span>
+                    <span class="game--hidden">*</span>
+                </div>
+                <div class="game--line2">
+                    <a class="game--link" href="https://botc-scripts.azurewebsites.net/script/133/1.0.0" target="_blank" rel="noopener"><span class="game--link--label">Trouble Brewing</span></a>
+                    <span class="game--st">
+                        <span class="game--st--label">ran by</span>
+                        <span class="game--st--value">Ambrosia</span>
+                    </span>
+                </div>
+                <hr class="game--hr">
+                <div class="game--line3 btn">
+                    <span class="game--btn btn">
+                        See more
+                    </div>
+                </div>
+            </aviary-game>
+        </template>
+    </div>
+    <script src="games.mjs" type="module"></script>
+</body>
+</html>
