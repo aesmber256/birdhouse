@@ -4,13 +4,13 @@ import {
     cloneTemplate,
     setupStaffAuth,
     getByClass,
-    toUtcMinutes
+    toUtcMinutes,
+    revealDOM
 } from "./utils.mjs";
 attachErrorAlerts(window);
 
 import {
     BirdhouseAPI,
-    DEBUG as API_DEBUG_URL
 } from "./api.mjs";
 import { formatHHMM, formatSHHMM } from "./api-utils.mjs";
 
@@ -73,4 +73,6 @@ document.getElementById("new-game-btn").addEventListener("click", async x => {
     if (!isStaff) return;
     await api.newGame(BirdhouseAPI.createDefaultGame(date));
     location.reload();
-})
+});
+
+revealDOM();

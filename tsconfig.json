@@ -5,5 +5,5 @@
         "allowJs": true,
         "baseUrl": "."
     },
-    "include": ["./**/*.js", "./**/*.d.ts"]
+    "include": ["./**/*.d.ts"]
 }

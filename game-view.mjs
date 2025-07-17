@@ -4,13 +4,13 @@ import {
     cloneTemplate,
     setupStaffAuth,
     getByClass,
-    formatDayDate
+    formatDayDate,
+    revealDOM
 } from "./utils.mjs";
 attachErrorAlerts(window);
 
 import {
     BirdhouseAPI,
-    DEBUG as API_DEBUG_URL
 } from "./api.mjs";
 import { formatHHMM, formatRawHHMM, formatRawSHHMM, formatSHHMM, ymdTimeTzToDate, ymdToDate } from "./api-utils.mjs";
 
@@ -165,3 +165,5 @@ document.getElementById("staff-view--delete-btn")?.addEventListener("click", asy
     await api.deleteGame(gameId);
     location.replace(`./games.html?date=${game.date}&navback=1`);
 });
+
+revealDOM();

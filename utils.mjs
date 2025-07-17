@@ -167,3 +167,8 @@ export async function setupStaffAuth(api) {
 
     return staff;
 }
+
+export function revealDOM() {
+    document.getElementById("preload-spinner")?.remove();
+    document.body.dataset.fullyloaded = "";
+}

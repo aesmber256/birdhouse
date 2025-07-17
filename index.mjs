@@ -2,13 +2,13 @@
 import {
     attachErrorAlerts,
     formatDayDate,
+    revealDOM,
     setupStaffAuth
 } from "./utils.mjs";
 attachErrorAlerts(window);
 
 import {
     BirdhouseAPI,
-    DEBUG as API_DEBUG_URL
 } from "./api.mjs";
 
 import * as utils from "./api-utils.mjs";
@@ -63,3 +63,5 @@ document.getElementById("new-game-btn").addEventListener("click", async x => {
     await api.newGame(BirdhouseAPI.createDefaultGame(ymd));
     location.assign(`./games.html?date=${ymd}`)
 });
+
+revealDOM();

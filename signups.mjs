@@ -2,13 +2,13 @@
 import {
     attachErrorAlerts,
     ExitError,
+    revealDOM,
     setupStaffAuth
 } from "./utils.mjs";
 attachErrorAlerts(window);
 
 import {
     BirdhouseAPI,
-    DEBUG as API_DEBUG_URL
 } from "./api.mjs";
 
 const api = new BirdhouseAPI();
@@ -102,3 +102,5 @@ function getFormattedDateTime(date) {
 
     return `${yyyy}-${mm}-${dd} ${hh}:${min}:${sec} ${offsetSign}${offsetHrs}:${offsetMins}`;
 }
+
+revealDOM();

@@ -97,3 +97,27 @@ body[data-is-staff] [data-not-staff] {
 [hidden] {
     display: none !important;
 }
+
+body:not([data-fullyloaded]) {
+    #main-content,
+    #header--staff-btn {
+      visibility: hidden;
+      overflow: hidden;
+    }
+
+    #preload-spinner {
+        width: 32px;
+        height: 32px;
+        border: 4px solid #ccc;
+        border-top-color: #333;
+        border-radius: 50%;
+        animation: preload-spinner-spin 0.3s linear infinite;
+        margin: 20px auto;
+    }
+}
+    
+@keyframes preload-spinner-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.game-view.css">
-    <title>Birdhouse - (unlimited) Games</title>
+    <link rel="stylesheet" href="./game-view.css">
+    <title>Birdhouse - (but no) Game</title>
 </head>
 <body>
     <header id="main-header">
@@ -14,6 +14,7 @@
             <span data-staff>Logout</span>
         </div>
     </header>
+    <div id="preload-spinner"></div>
     <main id="main-content">
         <div id="container">
             <div id="game-header" class="header">
@@ -90,6 +91,6 @@
 
     <div hidden>
     </div>
-    <script src="game-view.mjs" type="module"></script>
+    <script src="./game-view.mjs" type="module"></script>
 </body>
 </html>
