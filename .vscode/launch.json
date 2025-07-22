@@ -6,7 +6,7 @@
     "configurations": [
         {
             "type": "chrome",
-            "runtimeExecutable": "E:\\Tools\\ungoogled-chromium_137.0.7151.103-1.1_windows_x64\\chrome.exe",
+            "runtimeExecutable": "E:\\Tools\\chromium\\chrome.exe",
             "request": "launch",
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:5500",

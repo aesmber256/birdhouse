@@ -44,6 +44,10 @@ declare namespace API {
         name: string;
         /** Optional notes provided with the signup. */
         notes: string;
+        
+        main_state: boolean;
+        
+        sub_state: boolean;
     }
 
     interface Date {

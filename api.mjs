@@ -59,6 +59,30 @@ export class BirdhouseAPI {
     }
 
     /**
+     * @param {number} signupId 
+     * @param {boolean} state 
+     */
+    async setSignupMainState(signupId, state) {
+        this._assertAuth();
+        await this._fetch(`signupmain`, false, {
+            body: JSON.stringify({ id: signupId, state: state }),
+            method: "PUT"
+        });
+    }
+
+    /**
+     * @param {number} signupId 
+     * @param {boolean} state 
+     */
+    async setSignupSubState(signupId, state) {
+        this._assertAuth();
+        await this._fetch(`signupsub`, false, {
+            body: JSON.stringify({ id: signupId, state: state }),
+            method: "PUT"
+        });
+    }
+
+    /**
      * @param {number} id 
      * @returns {Promise<void>}
      */

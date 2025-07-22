@@ -55,6 +55,17 @@ td:nth-child(3) {
     font-style: italic;
 }
 
+
+td:nth-child(4), 
+td:nth-child(5) {
+    text-align: center;
+
+    input {
+        transform: scale(1.5);
+        transform-origin: center;
+    }
+}
+
 tr.hidden {
     display: none;
 }

@@ -47,14 +47,45 @@ for (const signup of signups) {
     const date = row.insertCell();
     const name = row.insertCell();
     const notes = row.insertCell();
+    const main = row.insertCell();
+    const sub = row.insertCell();
     
     date.textContent = getFormattedDateTime(new Date(signup.added_timestamp));
     name.textContent = signup.name;
     notes.textContent = signup.notes;
 
+    const mainBox = document.createElement("input");
+    mainBox.dataset.type = "main";
+    mainBox.type = "checkbox";
+    mainBox.checked = signup.main_state;
+
+    const subBox = document.createElement("input");
+    subBox.dataset.type = "sub";
+    subBox.type = "checkbox";
+    subBox.checked = signup.sub_state;
+
+    main.append(mainBox);
+    sub.append(subBox);
+
     cells.push(row);
     names.push(signup.name.toLowerCase())
 }
+
+table.addEventListener("change", async ev => {
+    if (!(ev.target instanceof HTMLInputElement) || typeof ev.target.dataset.type !== "string") return;
+    switch (ev.target.dataset.type) {
+        case "main":
+            await api.setSignupMainState(Number(ev.target.parentElement?.parentElement?.dataset?.id), ev.target.checked);
+            break;
+
+        case "sub":
+            await api.setSignupSubState(Number(ev.target.parentElement?.parentElement?.dataset?.id), ev.target.checked);
+            break;
+    
+        default:
+            break;
+    }
+})
 
 let timer;
 filter.addEventListener("keyup", () => {
