@@ -39,10 +39,6 @@ for (const {date, hidden} of dates) {
     }
 
     const index = actualDate.getDate() - 4;
-    if (index > cols.length || index < 0) {
-        console.warn("Invalid date!", date);
-        continue;
-    }
     cols[index]?.append(entry);
 }
 
