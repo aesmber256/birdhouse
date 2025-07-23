@@ -38,8 +38,22 @@ for (const {date, hidden} of dates) {
         entry.textContent += '*'
     }
 
-    //@ts-ignore
-    cols[actualDate.getDay() - 4].append(entry);
+    // 0 - Sunday, 6 - Saturday
+    const day = actualDate.getDay();
+    
+    switch (day) {
+        case 4: // Thursday
+        case 5: // Friday
+        case 6: // Saturday
+            //@ts-ignore
+            cols[day - 4].append(entry);
+            break;
+    
+        default:
+            console.warn("Invalid date!", date);
+            break;
+    }
+
 }
 
 //@ts-ignore
