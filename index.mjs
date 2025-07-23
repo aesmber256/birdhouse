@@ -38,8 +38,12 @@ for (const {date, hidden} of dates) {
         entry.textContent += '*'
     }
 
-    //@ts-ignore
-    cols[actualDate.getDay() - 4].append(entry);
+    const index = actualDate.getDate() - 4;
+    if (index > cols.length || index < 0) {
+        console.warn("Invalid date!", date);
+        continue;
+    }
+    cols[index]?.append(entry);
 }
 
 //@ts-ignore
