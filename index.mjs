@@ -38,8 +38,8 @@ for (const {date, hidden} of dates) {
         entry.textContent += '*'
     }
 
-    const index = actualDate.getDate() - 4;
-    cols[index]?.append(entry);
+    //@ts-ignore
+    cols[actualDate.getDay() - 4].append(entry);
 }
 
 //@ts-ignore
