@@ -41,12 +41,16 @@ export class ExitError extends Error {
     }
 }
 
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
 /**
  * @param {Date} date 
  * @returns {string}
  */
 export function formatDayDate(date) {
-    return `${date.getDate()}. ${date.getMonth() + 1}. ${date.getFullYear()}`;
+    return `${monthNames[date.getMonth()]} ${date.getDate()}. ${date.getFullYear()}`;
 }
 
 /**
