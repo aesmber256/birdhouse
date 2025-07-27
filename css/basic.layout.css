@@ -22,7 +22,7 @@ body[data-loading] {
     background: var(--header-bg);
     border-bottom: var(--header-sep-color) var(--thin-border-size) solid;
     
-    padding-left: 1em;
+    padding-left: 0.2em;
     padding-right: 1em;
     
     display: flex;

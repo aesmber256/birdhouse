@@ -45,8 +45,6 @@ function resolveRoute(pageName) {
     }
 }
 
-console.log(navTo);
-
 /**
 * @param {string} [pageName]
 * @param {Router.NavInit} [init]
@@ -210,7 +208,7 @@ async function navToCore(url, originFragment, controller, prevRecurseUrl) {
     }
     for (const result of await Promise.allSettled(freePromises)) {
         if (result.status === "rejected") {
-            console.error("Failed to run a loaded module", result.reason);
+            console.error("Failed to free a loaded module", result.reason);
         }
     }
     

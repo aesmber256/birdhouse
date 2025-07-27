@@ -17,6 +17,11 @@
     }
 }
 
+no-break {
+    display: inline;
+    word-break: keep-all;
+}
+
 .btn {
     user-select: none;
     cursor: pointer;
@@ -60,18 +65,10 @@
     margin-right: auto;
 }
 
-.fsize-0_77 {
-    font-size: 0.77em;
-}
+.fsize-0_77 { font-size: 0.77em; }
+.fsize-0_50 { font-size: 0.50em; }
+.fsize-0_33 { font-size: 0.33em; }
+.fsize-0_25 { font-size: 0.25em; }
 
-.fsize-0_5 {
-    font-size: 0.5em;
-}
-
-.fsize-0_33 {
-    font-size: 0.33em;
-}
-
-.fsize-0_25 {
-    font-size: 0.25em;
-}
+.disp-block { display: block; }
+.disp-inline { display: inline; }
