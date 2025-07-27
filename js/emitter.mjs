@@ -1,6 +1,6 @@
 /**
- * @callback EmitterCallback
  * @template T
+ * @callback EmitterCallback
  * @param {T} data
  * @returns {void}
  */

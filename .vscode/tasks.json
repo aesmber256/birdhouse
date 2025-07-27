@@ -1,0 +1,39 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "typecheck",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"label": "Typecheck",
+			"detail": "tsc"
+		},
+		{
+			"type": "npm",
+			"script": "watch",
+			"problemMatcher": [
+				"$tsc-watch"
+			],
+			"label": "Watch",
+			"detail": "tsc",
+			"isBackground": true,
+			"runOptions": {
+				"instanceLimit": 1,
+				"runOn": "folderOpen",
+				"instancePolicy": "warn"
+			}
+		},
+		{
+			"type": "npm",
+			"script": "dev",
+			"label": "Dev",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+      		"isBackground": true,
+		},
+	]
+}

@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <!--suppress HtmlUnknownTag -->
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Birdhouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
+
+    <link rel="stylesheet" href="css/basic.css">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg">
+    <link rel="shortcut icon" href="/img/favicon/favicon2.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="Birdhouse">
+    <link rel="manifest" href="/img/favicon/site.webmanifest">
 </head>
 <body>
+<div id="body-wrapper">
+
     <header id="main-header">
-        <div id="header--name"><a href="./index.html" class="unstyled"><span id="header--name--highlight">Aviary</span> | Project Birdhouse</a></div>
-        <div id="header--staff-btn" class="btn">
-            <span data-not-staff>Staff Login</span>
-            <span data-staff>Logout</span>
+        <a id="main-header--name-container" href="#_landing" class="unstyled">
+            <img id="main-header--img" src="img/crow.png">
+            <div id="main-header--name">
+                <span id="main-header--name--aviary">Aviary</span>
+                <span id="main-header--name--sep"></span> 
+                <span id="main-header--name--project">Project Birdhouse</span> 
+            </div>
+        </a>
+        <div id="main-header--login-btn" class="btn">
+            <a href="#login" class="unstyled">Login</a>
         </div>
     </header>
-    <div id="preload-spinner"></div>
-    
-    <main id="main-content">
-        <div id="col1">
-            <header class="col--label">Thursday</header>
-        </div>
-        <div id="col2">
-            <header class="col--label">Friday</header>
-        </div>
-        <div id="col3">
-            <header class="col--label">Saturday</header>
-        </div>
-        <footer id="new-game" data-staff>
-            <div id="new-game-btn" class="btn border">
-                New game
-            </div>
-        </footer>
-    </main>
 
-    <div hidden>
-        <template id="template-entry">
-            <aviary-entry class="btn border no-padding"></aviary-entry>
-        </template>
-    </div>
-    <script src="./index.mjs" type="module"></script>
+    <div id="preload-spinner"></div>
+    <main id="main-content"></main>
+    <footer id="main-footer">
+        <div>
+            Made with ♡ by Ambrosia
+        </div>
+    </footer>
+</div>    
+
+<script src="js/index.mjs" type="module"></script>
+
 </body>
 </html>

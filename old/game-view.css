@@ -1,0 +1,108 @@
+@import "styles.basic.css";
+@import "styles.layout.css";
+
+#main-content {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertical */
+    row-gap: 1em;
+}
+
+#container {
+    display: grid;
+    grid-column-gap: 2ch;
+    grid-row-gap: 1ch;
+    font-size: 2em;
+}
+
+#game-header { grid-area: 1 / 1 / 2 / 3; }
+#game-time-label { grid-area: 2 / 1 / 3 / 2; }
+#game-time-value { grid-area: 2 / 2 / 3 / 3; }
+
+#game-tz-label { grid-area: 3 / 1 / 4 / 2; }
+#game-tz-value { grid-area: 3 / 2 / 4 / 3; }
+
+#game-script-label { grid-area: 4 / 1 / 5 / 2; }
+#game-script-value { grid-area: 4 / 2 / 5 / 3; }
+
+#game-storyteller-label { grid-area: 5 / 1 / 6 / 2; }
+#game-storyteller-value { grid-area: 5 / 2 / 6 / 3; }
+
+#game-hidden-label { grid-area: 6 / 1 / 7 / 2; }
+#game-hidden-value { grid-area: 6 / 2 / 7 / 3; }
+
+#signup, #staff-view { grid-area: 7 / 1 / 8 / 3; }
+
+#signup-name {
+    margin-top: 0.25em;
+    display: flex;
+    align-items: center;
+    column-gap: 2ch;
+}
+
+#signup-name--input {
+    width: 100%;
+    font-size: 70%;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+#signup-notes--hint {
+    font-size: 0.5em;
+    color: var(--fg2)
+}
+
+#signup-btn-container {
+    text-align: center;
+    margin-top: 0.5em;
+}
+
+#signup-btn {
+    padding: 0.15em;
+}
+
+input {
+    display: block;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+#staff-view--btn-container {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0.2em;
+    grid-row-gap: 0px;
+
+    > .btn {
+        border-radius: 0.6em;
+        font-size: 0.6em;
+    }
+} 
+
+#game-script-value--input-name,
+#game-script-value--input-link {
+    height: 50%;
+}
+
+.header {
+    text-align: center; 
+    font-size: 1.2em;
+}
+
+.label {
+    text-align: right;
+}
+
+#games {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1em;
+}
+
+#new-game-container {
+    text-align: center;
+}

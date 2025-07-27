@@ -1,0 +1,30 @@
+#main-content {
+    main {
+        font-size: 1.3em;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, auto);
+        grid-row-gap: 1em; 
+    }
+
+    input {
+        display: block;
+    }
+    
+    header {
+        text-align: center;
+    }
+
+    #login-btn {
+        min-width: 9ch;
+        text-align: center;
+    }
+
+    #login-btn:not(.disabled) #login-throbber {
+        display: none;
+    } 
+}
+
+#main-header--login-btn {
+    display: none;
+}

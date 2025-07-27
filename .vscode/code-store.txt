@@ -1,0 +1,49 @@
+/**
+ * @param {BirdhouseAPI} api
+ * @returns {Promise<boolean>}
+ */
+export async function setupStaffAuth(api) {
+    const loginBtn = document.getElementById("header--staff-btn");
+    if (!loginBtn) {
+        throw new SyntaxError("No login button found");
+    }
+
+    const key = sessionStorage.getItem(API_KEY_ID);
+    const staff = isStaff() && await api.tryAuth(key ?? undefined);
+
+    if (staff) {
+        document.body.setAttribute("data-is-staff", "");
+    }
+    else {
+        document.body.removeAttribute("data-is-staff");
+    }
+
+    loginBtn.addEventListener("click", async () => {
+        if (staff) {
+            setStaff(false);
+            location.reload();
+            return;
+        }
+        
+        const key = sessionStorage.getItem(API_KEY_ID);
+        if (!key || !await api.tryAuth(key)) {
+            sessionStorage.removeItem(API_KEY_ID)
+            let result = prompt("Enter passcode");
+            if (result === null) {
+                return;
+            }
+    
+            if (! await api.tryAuth(result.trim())) {
+                alert("Failed to authenticate");
+                return;
+            }        
+            
+            sessionStorage.setItem(API_KEY_ID, result);
+        }
+        
+        setStaff(true);
+        location.reload();
+    });
+
+    return staff;
+}

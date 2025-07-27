@@ -6,13 +6,13 @@ import {
     getByClass,
     toUtcMinutes,
     revealDOM
-} from "./utils.mjs";
+} from "../utils.mjs";
 attachErrorAlerts(window);
 
 import {
     BirdhouseAPI,
-} from "./api.mjs";
-import { formatHHMM, formatSHHMM } from "./api-utils.mjs";
+} from "../api.mjs";
+import { formatHHMM, formatSHHMM } from "../api-utils.mjs";
 
 const query = new URLSearchParams(location.search);
 const date = Number(query.get("date") ?? NaN);
@@ -74,5 +74,6 @@ document.getElementById("new-game-btn").addEventListener("click", async x => {
     await api.newGame(BirdhouseAPI.createDefaultGame(date));
     location.reload();
 });
+
 
 revealDOM();

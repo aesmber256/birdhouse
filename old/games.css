@@ -1,0 +1,53 @@
+@import "styles.basic.css";
+@import "styles.layout.css";
+
+#main-content {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertical */
+    row-gap: 1em;
+}
+
+#games {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1em;
+}
+
+#new-game-container {
+    text-align: center;
+}
+
+aviary-game {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 1.4em;
+    background: var(--bg2);
+    padding: 1em;
+    display: block;
+    border: var(--basic-border);
+    border-radius: 0.75em;
+
+    .game--line3 {
+        margin: auto;
+        width: fit-content;
+    }
+
+    .game--btn {
+        width: fit-content;
+    }
+
+    &:not([data-hidden]) .game--hidden {
+        display: none;
+    }
+}
+
+#new-game-btn {
+    border: var(--basic-border);
+    background: var(--bg2);
+    padding: 0.3em;
+    border-radius: 0.75em;
+}

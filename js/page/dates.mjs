@@ -3,15 +3,14 @@ import {
     attachErrorAlerts,
     formatDayDate,
     revealDOM,
-    setupStaffAuth
-} from "./utils.mjs";
+} from "../utils.mjs";
 attachErrorAlerts(window);
 
 import {
     BirdhouseAPI,
-} from "./api.mjs";
+} from "../api.mjs";
 
-import * as utils from "./api-utils.mjs";
+import * as utils from "../api-utils.mjs";
 
 const api = new BirdhouseAPI();
 const isStaff = await setupStaffAuth(api);

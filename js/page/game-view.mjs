@@ -6,13 +6,13 @@ import {
     getByClass,
     formatDayDate,
     revealDOM
-} from "./utils.mjs";
+} from "../utils.mjs";
 attachErrorAlerts(window);
 
 import {
     BirdhouseAPI,
-} from "./api.mjs";
-import { formatHHMM, formatRawHHMM, formatRawSHHMM, formatSHHMM, ymdTimeTzToDate, ymdToDate } from "./api-utils.mjs";
+} from "../api.mjs";
+import { formatHHMM, formatRawHHMM, formatRawSHHMM, formatSHHMM, ymdTimeTzToDate, ymdToDate } from "../api-utils.mjs";
 
 
 const query = new URLSearchParams(location.search);

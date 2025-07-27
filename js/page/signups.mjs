@@ -1,15 +1,14 @@
-//@ts-check
 import {
     attachErrorAlerts,
     ExitError,
     revealDOM,
     setupStaffAuth
-} from "./utils.mjs";
+} from "../utils.mjs";
 attachErrorAlerts(window);
 
 import {
     BirdhouseAPI,
-} from "./api.mjs";
+} from "../api.mjs";
 
 const api = new BirdhouseAPI();
 const isStaff = await setupStaffAuth(api);
@@ -56,6 +55,7 @@ for (const signup of signups) {
     names.push(signup.name.toLowerCase())
 }
 
+/**@type {number}*/
 let timer;
 filter.addEventListener("keyup", () => {
     clearTimeout(timer);

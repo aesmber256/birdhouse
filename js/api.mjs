@@ -1,6 +1,3 @@
-/// <reference path="./api.d.ts" />
-//@ts-check
-
 import { Emitter } from "./emitter.mjs";
 
 export const DEBUG = "http://127.0.0.1:8787";

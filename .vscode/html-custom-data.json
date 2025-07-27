@@ -1,0 +1,30 @@
+{
+    "version": 1.1,
+    "tags": [],
+    "globalAttributes": [
+        {
+            "name": "data-user-role",
+            "description": "Marks the element as visible to a specific role only.",
+            "valueSet": "userRole"
+        }
+    ],
+    "valueSets": [
+        {
+            "name": "userRole",
+            "values": [
+                {
+                    "name": "none",
+                    "description": "A default, non-logged in user"
+                },
+                {
+                    "name": "player",
+                    "description": "Logged in player"
+                },
+                {
+                    "name": "staff",
+                    "description": "Staff member"
+                }
+            ]
+        }
+    ]
+}

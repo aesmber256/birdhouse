@@ -1,0 +1,81 @@
+:root {
+    --entry-border-color: #ffffff;
+    --entry-bg: var(--bg2);
+    --entry-fg-cancelled: rgb(152, 56 , 56);
+
+    --col-sep-fg: rgb(160, 160, 160);
+    --col-new-btn-fg: rgb(56, 152, 56);
+    --col-new-btn-fg-hover: rgb(152, 56 , 56);
+}
+
+#inner-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr max-content;
+    grid-template-areas:
+          "col1 col2 col3"
+          "btn btn btn";
+    max-width: 1000px;
+    margin: 1em auto auto;
+}
+
+#col1 { grid-area: col1; }
+#col2 { grid-area: col2; }
+#col3 { grid-area: col3; }
+
+#col1, #col2, #col3 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
+    row-gap: 0.75em;
+    
+    header {
+        text-align: center;
+        border-bottom: var(--col-sep-fg) var(--thin-border-size) solid;
+        width: 90%;
+    }
+}
+
+/*noinspection CssInvalidHtmlTagReference*/
+aviary-entry {
+    padding: 1em;
+    background: var(--entry-bg);
+    border-radius: 0.72em;
+    cursor: pointer;
+    text-align: center;
+
+    &.disabled {
+        text-decoration: line-through var(--entry-fg-cancelled) 0.34ch;
+
+        body[data-is-staff] & {
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline dotted;
+            }
+
+            &:active {
+                text-decoration: underline;
+                font-style: italic;
+            }
+        }
+    }
+}
+
+#new-game {
+    grid-area: btn;
+    text-align: center;
+    border-top: var(--col-sep-fg) var(--thin-border-size) solid;
+    margin-top: 0.75em;
+}
+
+#new-game-btn {
+    width: fit-content;
+    margin: 0.75em auto auto;
+    padding: 0.5em;
+    background: var(--bg2);
+    border-radius: 0.72em;
+}

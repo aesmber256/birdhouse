@@ -1,0 +1,77 @@
+.box {
+    display: block;
+    border: var(--basic-border);
+    background: var(--bg2);
+
+    &.box-rounded {
+        border-radius: 0.6em;
+    }
+
+    &.box-pad,
+    &.box-pad-0_6 {
+        padding: 0.6em;
+    }
+
+    &.box-alt-bg {
+        background: var(--bg);
+    }
+}
+
+.btn {
+    user-select: none;
+    cursor: pointer;
+    
+    &:not(.disabled) {
+        &:hover {
+            text-decoration: dotted underline;
+        }
+
+        &:active {
+            text-decoration: underline;
+            font-style: italic;
+        }
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        color: var(--fg2);
+    }
+}
+
+.centerdiv {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+    
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.centertext {
+    text-align: center;
+}
+
+.wfit {
+    width: fit-content;
+}
+
+.wautomargin {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fsize-0_77 {
+    font-size: 0.77em;
+}
+
+.fsize-0_5 {
+    font-size: 0.5em;
+}
+
+.fsize-0_33 {
+    font-size: 0.33em;
+}
+
+.fsize-0_25 {
+    font-size: 0.25em;
+}

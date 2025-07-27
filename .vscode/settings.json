@@ -1,0 +1,12 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "node_modules": true,
+    },
+
+    "html.customData": [
+        ".vscode/html-custom-data.json"
+    ],
+
+    "css.styleSheets": ["**/css/*.css"]
+}
