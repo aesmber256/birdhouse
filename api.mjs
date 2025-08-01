@@ -10,7 +10,7 @@ export class ApiError extends Error {}
 
 export class BirdhouseAPI {
     constructor() {
-        this.urlBase = DEBUG;
+        this.urlBase = PRODUCTION;
         this._apiKey = undefined;
         /**@type {Emitter<ApiError>}*/
         this.onError = new Emitter();
