@@ -24,7 +24,7 @@ const api = new BirdhouseAPI();
 const isStaff = await setupStaffAuth(api);
 
 const game = await api.getGame(gameId);
-
+console.debug(game);
 
 /**@type {HTMLInputElement} */
 //@ts-ignore

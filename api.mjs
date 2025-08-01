@@ -2,15 +2,18 @@
 //@ts-check
 
 import { Emitter } from "./emitter.mjs";
+import { isLocalhost } from "./utils.mjs";
 
 export const DEBUG = "http://127.0.0.1:8787";
 export const PRODUCTION = "https://birdhouse.why474474.workers.dev";
+
+const FORCE_PROD = false;
 
 export class ApiError extends Error {}
 
 export class BirdhouseAPI {
     constructor() {
-        this.urlBase = PRODUCTION;
+        this.urlBase = isLocalhost(location.hostname) && !FORCE_PROD ? DEBUG : PRODUCTION;
         this._apiKey = undefined;
         /**@type {Emitter<ApiError>}*/
         this.onError = new Emitter();
@@ -89,6 +92,17 @@ export class BirdhouseAPI {
     async deleteGame(id) {
         this._assertAuth();
         await this._fetch(`game?gameid=${id}`, false, {
+            method: "DELETE"
+        });
+    }
+
+    /**
+     * @param {number} id 
+     * @returns {Promise<void>}
+     */
+    async deleteSignup(id) {
+        this._assertAuth();
+        await this._fetch(`signup?signupid=${id}`, false, {
             method: "DELETE"
         });
     }
@@ -179,16 +193,15 @@ export class BirdhouseAPI {
     }
 
     /**
-     * @param {API.UnixTime} time 
      * @returns {API.NewGame}
      */
-    static createDefaultGame(time) {
+    static createDefaultGame() {
         return {
             id: null,
-            time: time,
+            time: 253370761200,
             storyteller: "No storyteller",
-            script_name: "Trouble Brewing",
-            script_link: "https://botc-scripts.azurewebsites.net/script/133/1.0.0",
+            script_name: "No script",
+            script_link: "https://example.org",
             category: 3,
             hidden: true
         }

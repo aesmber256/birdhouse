@@ -66,6 +66,15 @@ td:nth-child(5) {
     }
 }
 
+td:nth-child(6) {
+    text-align: center;
+
+    input {
+        transform: scale(1.5);
+        transform-origin: center;
+    }
+}
+
 tr.hidden {
     display: none;
 }

@@ -71,7 +71,7 @@ gamesList.addEventListener("click", ev => {
 //@ts-ignore
 document.getElementById("new-game-btn").addEventListener("click", async x => {
     if (!isStaff) return;
-    await api.newGame(BirdhouseAPI.createDefaultGame(date));
+    await api.newGame(BirdhouseAPI.createDefaultGame());
     location.reload();
 });
 

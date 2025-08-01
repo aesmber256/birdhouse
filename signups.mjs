@@ -49,6 +49,7 @@ for (const signup of signups) {
     const notes = row.insertCell();
     const main = row.insertCell();
     const sub = row.insertCell();
+    const remove = row.insertCell();
     
     date.textContent = getFormattedDateTime(new Date(signup.added_timestamp));
     name.textContent = signup.name;
@@ -64,8 +65,13 @@ for (const signup of signups) {
     subBox.type = "checkbox";
     subBox.checked = signup.sub_state;
 
+    
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "X";
+
     main.append(mainBox);
     sub.append(subBox);
+    remove.append(removeBtn);
 
     cells.push(row);
     names.push(signup.name.toLowerCase())
@@ -85,6 +91,14 @@ table.addEventListener("change", async ev => {
         default:
             break;
     }
+});
+
+table.addEventListener("click", async ev => {
+    if (!(ev.target instanceof HTMLButtonElement)) return;
+    const row = ev.target.parentElement?.parentElement;
+    const id = Number(row?.dataset?.id);
+    await api.deleteSignup(id);
+    row?.remove();
 })
 
 let timer;

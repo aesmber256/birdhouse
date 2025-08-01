@@ -18,7 +18,7 @@ const isStaff = await setupStaffAuth(api);
 
 
 // Populate boxes
-const games = await api.getGames(Math.trunc(Date.now() / 1000) - 1, 315328464000 /* Year 9999 1 1 0000 */);
+const games = await api.getGames(Math.trunc(Date.now() / 1000) - 1, 253370761200 /* Year 9999 1 1 0000 */);
 const cols = [
     document.getElementById("col1"),
     document.getElementById("col2"),
@@ -55,17 +55,8 @@ document.getElementById("main-content").addEventListener("click", async x => {
 //@ts-ignore
 document.getElementById("new-game-btn").addEventListener("click", async x => {
     if (!isStaff) return;
-    const result = prompt("Enter in the date in the YYYYMMDD format.\n\nExample: 31. 7. 2025 => 2025 07 31 => 20250731");
-    if (result === null) return;
-
-    const ymd = Number(result.trim());
-    if (!utils.validYmd(ymd)) {
-        alert("Invalid date");
-        return;
-    }
-
-    await api.newGame(BirdhouseAPI.createDefaultGame(ymd));
-    location.assign(`./games.html?date=${ymd}`)
+    const gameId = await api.newGame(BirdhouseAPI.createDefaultGame());
+    location.assign(`./game-view.html?gameid=${gameId}`)
 });
 
 revealDOM();
