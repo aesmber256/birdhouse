@@ -10,15 +10,15 @@ export class ApiError extends Error {}
 
 export class BirdhouseAPI {
     constructor() {
-        this.urlBase = PRODUCTION;
+        this.urlBase = DEBUG;
         this._apiKey = undefined;
         /**@type {Emitter<ApiError>}*/
         this.onError = new Emitter();
     }
 
     /**
-     * @param {API.YYYYMMDD} start 
-     * @param {API.YYYYMMDD} end 
+     * @param {API.UnixTime} start 
+     * @param {API.UnixTime} end 
      * @returns {Promise<API.Game[]>}
      */
     async getGames(start, end) {
@@ -119,16 +119,6 @@ export class BirdhouseAPI {
         const result = await this._fetch(`signups?gameid=${gameId}`);
         return await result.json();
     }
-
-    /**
-     * @param {API.YYYYMMDD} start
-     * @param {API.YYYYMMDD} end
-     * @returns {Promise<API.Date[]>}
-     */
-    async getDates(start, end) {
-        const resp = await this._fetch(`dates?start=${start}&end=${end}`);
-        return await resp.json();
-    }
     
     /**
      * @param {string} [apiKey] 
@@ -137,6 +127,14 @@ export class BirdhouseAPI {
     async tryAuth(apiKey) {
         this._apiKey = apiKey ?? this._apiKey;
         return !!this._apiKey && (await this._fetch("auth", true)).ok;
+    }
+
+    
+    /**
+     * @returns {Promise<boolean>}
+     */
+    async ping() {
+        return (await fetch(this.urlBase, { method: "GET" })).status !== 503
     }
 
     _assertAuth() {
@@ -169,25 +167,29 @@ export class BirdhouseAPI {
         catch (e) {
             throw new ApiError(`Fetch failed: ${(await resp?.text()) ?? "<no message>"}`);
         }
+
+        if (resp.status === 503) {
+            alert("The site is down for maintenence");
+            throw new ApiError("503 - Service unavailable");
+        }
         
         if (!ignoreNotOk && !resp.ok)
-            throw new ApiError(`Request failed: ${await resp.text()}`);
+            throw new ApiError(`Request failed with ${resp.status}: ${await resp.text()}`);
         return resp;
     }
 
     /**
-     * @param {API.YYYYMMDD} ymd 
+     * @param {API.UnixTime} time 
      * @returns {API.NewGame}
      */
-    static createDefaultGame(ymd) {
+    static createDefaultGame(time) {
         return {
             id: null,
-            date: ymd,
-            time: 1200,
-            tz: 0,
+            time: time,
             storyteller: "No storyteller",
             script_name: "Trouble Brewing",
             script_link: "https://botc-scripts.azurewebsites.net/script/133/1.0.0",
+            category: 3,
             hidden: true
         }
     }

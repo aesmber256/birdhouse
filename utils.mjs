@@ -41,16 +41,21 @@ export class ExitError extends Error {
     }
 }
 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
+const dateFormatter = Intl.DateTimeFormat(navigator.languages, {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: undefined,
+});
 
 /**
  * @param {Date} date 
  * @returns {string}
  */
-export function formatDayDate(date) {
-    return `${monthNames[date.getMonth()]} ${date.getDate()}. ${date.getFullYear()}`;
+export function formatDate(date) {
+    return dateFormatter.format(date);
 }
 
 /**
@@ -127,6 +132,10 @@ export function setStaff(state) {
  * @returns {Promise<boolean>}
  */
 export async function setupStaffAuth(api) {
+    if (!await api.ping()) {
+        location.assign("./maintenance.html");
+    }
+
     const loginBtn = document.getElementById("header--staff-btn");
     if (!loginBtn) {
         throw new SyntaxError("No login button found");
@@ -175,4 +184,14 @@ export async function setupStaffAuth(api) {
 export function revealDOM() {
     document.getElementById("preload-spinner")?.remove();
     document.body.dataset.fullyloaded = "";
+}
+
+/**
+ * 
+ * @param {Date} date 
+ * @returns 
+ */
+export function dateToDatetimeLocal(date) {
+    const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000); // adjust to local time
+    return local.toISOString().slice(0, 16); // trim to "YYYY-MM-DDTHH:MM"
 }

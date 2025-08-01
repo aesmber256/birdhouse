@@ -1,11 +1,10 @@
 //@ts-check
 import {
     attachErrorAlerts,
-    cloneTemplate,
     setupStaffAuth,
-    getByClass,
-    formatDayDate,
-    revealDOM
+    formatDate,
+    revealDOM,
+    dateToDatetimeLocal
 } from "./utils.mjs";
 attachErrorAlerts(window);
 
@@ -21,23 +20,11 @@ if (isNaN(gameId)) {
     throw new Error("no or invalid gameid query param");
 }
 
-const queryGameNumber = Number(query.get("gamenumber") ?? NaN);
-if (isNaN(queryGameNumber)) {
-    throw new Error("no or invalid gamenumber query param");
-}
-
 const api = new BirdhouseAPI();
 const isStaff = await setupStaffAuth(api);
 
 const game = await api.getGame(gameId);
 
-/**@type {HTMLSpanElement} */
-//@ts-ignore
-const gameNumber = document.getElementById("game-number");
-
-/**@type {HTMLSpanElement} */
-//@ts-ignore
-const gameDate = document.getElementById("game-date");
 
 /**@type {HTMLInputElement} */
 //@ts-ignore
@@ -46,14 +33,6 @@ const timeInput = document.getElementById("game-time-value--input");
 /**@type {HTMLSpanElement} */
 //@ts-ignore
 const timeLabel = document.getElementById("game-time-value--label");
-
-/**@type {HTMLInputElement} */
-//@ts-ignore
-const tzInput = document.getElementById("game-tz-value--input");
-
-/**@type {HTMLSpanElement} */
-//@ts-ignore
-const tzLabel = document.getElementById("game-tz-value--label");
 
 /**@type {HTMLInputElement} */
 //@ts-ignore
@@ -75,6 +54,14 @@ const stInput = document.getElementById("game-storyteller-value--input");
 //@ts-ignore
 const stLabel = document.getElementById("game-storyteller-value--label");
 
+/**@type {HTMLSpanElement} */
+//@ts-ignore
+const categoryLabel = document.getElementById("game-cat-value--label");
+
+/**@type {HTMLSelectElement} */
+//@ts-ignore
+const categoryInput = document.getElementById("game-cat-value--select");
+
 /**@type {HTMLInputElement} */
 //@ts-ignore
 const hiddenInput = document.getElementById("game-hidden-value--input");
@@ -87,20 +74,15 @@ const nameInput = document.getElementById("signup-name--input");
 //@ts-ignore
 const notesInput = document.getElementById("signup-notes--area");
 
-const date = ymdTimeTzToDate(game.date, game.time, game.tz);
+const date = new Date(game.time * 1000);
 
-gameNumber.textContent = String(queryGameNumber);
-gameDate.textContent = formatDayDate(date);
-
-timeInput.value = formatRawHHMM(game.time);
-timeLabel.textContent = formatHHMM(game.time);
-
-tzInput.value = formatRawSHHMM(game.tz);
-tzLabel.textContent = `UTC${formatSHHMM(game.tz)}`;
+timeLabel.textContent = formatDate(date);
+timeInput.value = dateToDatetimeLocal(date);
 
 scriptInput.value = scriptLabel.textContent = game.script_name;
 linkInput.value = scriptLabel.href = game.script_link;
 stInput.value = stLabel.textContent = game.storyteller;
+categoryInput.value = String(game.category);
 hiddenInput.checked = game.hidden;
 
 //@ts-ignore
@@ -137,22 +119,21 @@ document.getElementById("staff-view--signups-btn")?.addEventListener("click", as
 document.getElementById("staff-view--update-btn")?.addEventListener("click", async x => {
     if (!isStaff) return;
     if (!(timeInput.reportValidity() 
-        && tzInput.reportValidity()
+        && categoryInput.reportValidity()
         && scriptInput.reportValidity()
         && linkInput.reportValidity()
         && stInput.reportValidity()
         && hiddenInput.reportValidity()))
         return;
     await api.editGame({
-        time: Number(timeInput.value),
-        tz: Number(tzInput.value),
+        time: Math.trunc(Date.parse(timeInput.value) / 1000),
         script_name: scriptInput.value,
         script_link: linkInput.value,
         storyteller: stInput.value,
         hidden: hiddenInput.checked,
+        category: Number(categoryInput.value),
 
         id: game.id,
-        date: game.date,
     });
     alert("Updated successfully");
     location.reload();
@@ -163,7 +144,7 @@ document.getElementById("staff-view--delete-btn")?.addEventListener("click", asy
     if (!isStaff) return;
     if (!confirm("Are you sure you want delete this game?")) return;
     await api.deleteGame(gameId);
-    location.replace(`./games.html?date=${game.date}&navback=1`);
+    location.replace(`./index.html`);
 });
 
 revealDOM();

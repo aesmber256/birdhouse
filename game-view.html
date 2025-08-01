@@ -17,21 +17,11 @@
     <div id="preload-spinner"></div>
     <main id="main-content">
         <div id="container">
-            <div id="game-header" class="header">
-                Game <span id="game-number">1</span> on <span id="game-date">1. 1. 1970</span>
-                <hr>
-            </div>
 
             <div id="game-time-label" class="label">Time</div>
             <div id="game-time-value">
                 <span id="game-time-value--label" data-not-staff>#Time</span>
-                <input id="game-time-value--input" type="text" value="2000" placeholder="2000" pattern="^(?:\+?|-)(?:[01]\d|2[0-3])[0-5]\d$" required data-staff>
-            </div>
-
-            <div id="game-tz-label" class="label">Timezone</div>
-            <div id="game-tz-value">
-                <span id="game-tz-value--label" data-not-staff>#Timezone</span>
-                <input id="game-tz-value--input" type="text" value="-0200" placeholder="-0200" pattern="^(?:\+?|-)(?:[01]\d|2[0-3])[0-5]\d$" required data-staff>
+                <input id="game-time-value--input" type="datetime-local" minlength="1" required data-staff>
             </div>
 
             <div id="game-script-label" class="label">Script</div>
@@ -44,7 +34,17 @@
             <div id="game-storyteller-label" class="label">Storyteller</div>
             <div id="game-storyteller-value">
                 <span id="game-storyteller-value--label" data-not-staff>#Storyteller</span>
-                <input id="game-storyteller-value--input" type="text" value="Ambrosia" minlength="1" required data-staff>
+                <input id="game-storyteller-value--input" type="text" value="No ST" minlength="1" required data-staff>
+            </div>
+
+            <div id="game-cat-label" class="label" title="Which column to show this game in on the main page" data-staff>Category</div>
+            <div id="game-cat-value">
+                <select id="game-cat-value--select" data-staff>
+                    <option value="0">Sceadeau</option>
+                    <option value="1">Crow</option>
+                    <option value="2">Friendly</option>
+                    <option value="3">Guest</option>
+                </select>
             </div>
 
             <div id="game-hidden-label" class="label" data-staff>Hidden</div>
@@ -88,6 +88,8 @@
             </div>
         </div>
     </main>
+    
+    <dialog id="tooltip"></dialog>
 
     <div hidden>
     </div>

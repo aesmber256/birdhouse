@@ -18,22 +18,20 @@
 }
 
 #game-header { grid-area: 1 / 1 / 2 / 3; }
-#game-time-label { grid-area: 2 / 1 / 3 / 2; }
-#game-time-value { grid-area: 2 / 2 / 3 / 3; }
 
-#game-tz-label { grid-area: 3 / 1 / 4 / 2; }
-#game-tz-value { grid-area: 3 / 2 / 4 / 3; }
+#game-script-label { grid-area: 2 / 1 / 3 / 2; }
+#game-script-value { grid-area: 2 / 2 / 3 / 3; }
 
-#game-script-label { grid-area: 4 / 1 / 5 / 2; }
-#game-script-value { grid-area: 4 / 2 / 5 / 3; }
+#game-storyteller-label { grid-area: 3 / 1 / 4 / 2; }
+#game-storyteller-value { grid-area: 3 / 2 / 4 / 3; }
 
-#game-storyteller-label { grid-area: 5 / 1 / 6 / 2; }
-#game-storyteller-value { grid-area: 5 / 2 / 6 / 3; }
+#game-cat-label { grid-area: 4 / 1 / 5 / 2; }
+#game-cat-value { grid-area: 4 / 2 / 5 / 3; }
 
-#game-hidden-label { grid-area: 6 / 1 / 7 / 2; }
-#game-hidden-value { grid-area: 6 / 2 / 7 / 3; }
+#game-hidden-label { grid-area: 5 / 1 / 6 / 2; }
+#game-hidden-value { grid-area: 5 / 2 / 6 / 3; }
 
-#signup, #staff-view { grid-area: 7 / 1 / 8 / 3; }
+#signup, #staff-view { grid-area: 6 / 1 / 7 / 3; }
 
 #signup-name {
     margin-top: 0.25em;
@@ -63,7 +61,7 @@
     padding: 0.15em;
 }
 
-input {
+input, select {
     display: block;
     height: 100%;
     box-sizing: border-box;

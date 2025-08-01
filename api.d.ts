@@ -1,29 +1,28 @@
 declare namespace API {
-    /** Represents a calendar date in YYYYMMDD format (e.g., 20250713). */
-    type YYYYMMDD = number;
+    const enum Category {
+        Sceadeau = 0,
+        Crow = 1,
+        Friendly = 2,
+        Guest = 3
+    }
 
-    /** Represents an absolute time in 24-hour HHMM format (e.g., 1345 for 1:45 PM). */
-    type HHMM = number;
-
-    /** Represents a signed time offset in HHMM format (e.g., -0300 for UTC-3). */
-    type SHHMM = number;
+    type UnixTime = number;
 
     /** Represents a game session. */
     interface Game {
         /** Unique identifier for the game. */
         id: number;
-        /** The date the game takes place (formatted as YYYYMMDD). */
-        date: YYYYMMDD;
-        /** The time the game starts (in HHMM format). */
-        time: HHMM;
-        /** Time zone offset from UTC (signed HHMM). */
-        tz: SHHMM;
+        /** The time the game takes place (formatted as a unix timestamp). */
+        time: UnixTime;
         /** Name of the game script used. */
         script_name: string;
         /** Link to the game script. */
         script_link: string;
         /** Name of the storyteller running the game. */
         storyteller: string;
+
+        category: Category;
+        
         /** Whether the game is hidden. */
         hidden: boolean;
     }
@@ -48,10 +47,5 @@ declare namespace API {
         main_state: boolean;
         
         sub_state: boolean;
-    }
-
-    interface Date {
-        date: YYYYMMDD,
-        hidden: boolean
     }
 }
