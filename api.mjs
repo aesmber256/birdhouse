@@ -198,7 +198,7 @@ export class BirdhouseAPI {
     static createDefaultGame() {
         return {
             id: null,
-            time: 253370761200,
+            time: Math.trunc(Date.now() / 1000) + 31536000,
             storyteller: "No storyteller",
             script_name: "No script",
             script_link: "https://example.org",

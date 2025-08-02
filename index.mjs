@@ -18,7 +18,7 @@ const isStaff = await setupStaffAuth(api);
 
 
 // Populate boxes
-const games = await api.getGames(Math.trunc(Date.now() / 1000) - 1, 253370761200 /* Year 9999 1 1 0000 */);
+const games = await api.getGames(Math.trunc(Date.now() / 1000) - 1, 253370761200 /* Year 9999 1 1 0000 GMT */);
 const cols = [
     document.getElementById("col1"),
     document.getElementById("col2"),
