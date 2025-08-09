@@ -7,7 +7,7 @@ import { isLocalhost } from "./utils.mjs";
 export const DEBUG = "http://127.0.0.1:8787";
 export const PRODUCTION = "https://birdhouse.why474474.workers.dev";
 
-const FORCE_PROD = false;
+const FORCE_PROD = true;
 
 export class ApiError extends Error {}
 

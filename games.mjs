@@ -31,7 +31,8 @@ const gamesList = document.getElementById("games");
 //@ts-ignore
 const gameTemplate = document.getElementById("template-game");
 
-const games = (await api.getGames(date, date)).sort((a, b) => toUtcMinutes(a.time, a.tz) - toUtcMinutes(b.time, b.tz));
+const games = (await api.getGames(date, date)).sort((a, b) => a.time - b.time);
+console.log(games);
 
 if (games.length === 0) {
     if (!query.has("navback")) {

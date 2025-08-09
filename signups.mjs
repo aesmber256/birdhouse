@@ -39,7 +39,7 @@ const cells = [];
 /**@type {string[]} */
 const names = [];
 
-const signups = await api.getSignups(gameId);
+const signups = (await api.getSignups(gameId)).sort((a,b) => a.added_timestamp - b.added_timestamp);
 for (const signup of signups) {
     const row = table.insertRow();
     row.dataset.id = String(signup.id);
